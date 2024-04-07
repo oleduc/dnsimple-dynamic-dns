@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  dnsimple-dynamic-dns:
+    image: python:3.11-alpine  # Use the image name you used in 'docker build'
+    build:
+      context: .  # Docker build context (the directory containing your Dockerfile and source code)
+      dockerfile: Dockerfile  # Specify the name of your Dockerfile
+    volumes:
+      - type: bind
+        source: ./  # Path to your local 'config' directory
+        target: /config  # Target path in the container where the config directory is expected

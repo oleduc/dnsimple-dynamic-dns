@@ -2,7 +2,7 @@ import os
 import shutil
 import time
 import requests
-import yml
+import yaml
 import logging
 from typing import List, Dict, Any, Callable
 from dnsimple import Client
@@ -112,7 +112,7 @@ def load_or_initialize_config():
 
     # Load and return the config if it exists
     with open(config_path, 'r') as file:
-        return yml.safe_load(file)
+        return yaml.safe_load(file)
 
 
 def main():

@@ -4,9 +4,6 @@ FROM python:3.11-alpine
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Create the directory where the configuration file will be located
-RUN mkdir /config
-
 # Inform Docker that the container expects a volume to be mounted at /config
 VOLUME /config
 
