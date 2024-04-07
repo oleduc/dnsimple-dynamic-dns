@@ -1,0 +1,11 @@
+account_id: account_id_here
+api_token: your_access_token_here
+update_frequency_seconds: 600
+ip_service_url: "https://api.ipify.org"
+zones:
+  - name: "foo.com"
+    records:
+      # Empty string means the root domain
+      - name: ""
+      - name: "www"
+      - name: "bar"
