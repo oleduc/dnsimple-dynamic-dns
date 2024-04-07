@@ -8,7 +8,6 @@ from typing import List, Dict, Any, Callable
 from dnsimple import Client
 from dnsimple.struct import ZoneRecordUpdateInput
 
-# Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
@@ -95,22 +94,18 @@ def load_or_initialize_config():
 
     # Check if the config file exists
     if not os.path.exists(config_path):
-        # Copy example config file to config directory if config doesn't exist
         logging.warning(
             f"No config.yml found in {config_path}. Creating one from the example config. PLEASE EDIT THIS FILE WITH YOUR SETTINGS.")
         shutil.copy(example_config_path, config_path)
 
-        # Print the example config file content
         with open(example_config_path, 'r') as file:
             example_config = file.read()
             print("\nExample config.yml content:\n")
             print(
-                example_config)  # This is where syntax highlighting would ideally occur, but it's printed as plain text here.
+                example_config)
 
-        # Since the script cannot proceed without a valid configuration, it might be a good idea to exit or pause execution here.
         raise SystemExit("Please configure config.yml in /config directory and restart the script.")
 
-    # Load and return the config if it exists
     with open(config_path, 'r') as file:
         return yaml.safe_load(file)
 
@@ -118,7 +113,6 @@ def load_or_initialize_config():
 def main():
     config = load_or_initialize_config()
 
-    # Validate config here if necessary
     try:
         while True:
             update_dns_records(config)
